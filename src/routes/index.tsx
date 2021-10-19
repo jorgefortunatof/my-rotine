@@ -5,7 +5,7 @@ import Introduction from './Introduction';
 
 const Routes: React.FC = () => {
 	return (
-		<NavigationContainer >
+		<NavigationContainer>
 			<Introduction />
 		</NavigationContainer>
 	);

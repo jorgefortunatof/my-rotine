@@ -8,27 +8,27 @@ import {
 	Title,
 	Description,
 	Tip,
-	Footer
+	Footer,
 } from './styles';
 
 const Welcome: React.FC = () => {
 	return (
 		<Container>
-
 			<Content>
 				<Logo />
 				<Title>Bem-vindo ao MyRotine</Title>
 				<Description>
-					o aplicativo que vai melhorar sua produtividade e te ajudar a alcançar seus obejetivos
+					o aplicativo que vai melhorar sua produtividade e te ajudar a alcançar
+					seus objetivos
 				</Description>
 			</Content>
 
 			<Footer>
 				<Tip>clique em iniciar para prosseguir</Tip>
-				<Button onPress={() => { }} title="Iniciar" />
+				<Button onPress={() => {}} title="Iniciar" />
 			</Footer>
 		</Container>
 	);
-}
+};
 
 export default Welcome;

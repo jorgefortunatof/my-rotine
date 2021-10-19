@@ -6,11 +6,13 @@ const Stack = createNativeStackNavigator();
 
 const Introduction: React.FC = () => {
 	return (
-		<Stack.Navigator initialRouteName='Welcome' screenOptions={{ headerShown: false }}>
+		<Stack.Navigator
+			initialRouteName="Welcome"
+			screenOptions={{ headerShown: false }}
+		>
 			<Stack.Screen name="Welcome" component={Welcome} />
 		</Stack.Navigator>
 	);
-}
+};
 
 export default Introduction;
-

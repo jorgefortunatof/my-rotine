@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
-import { colors, fonts, metrics } from "../../styles";
+import styled from 'styled-components/native';
+import { colors, fonts, metrics } from '../../styles';
 
 export const Container = styled.TouchableOpacity`
 	align-items: center;
