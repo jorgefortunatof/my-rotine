@@ -5,7 +5,8 @@
 		"android": "expo start --android",
 		"ios": "expo start --ios",
 		"web": "expo start --web",
-		"eject": "expo eject"
+		"eject": "expo eject",
+		"test": "jest"
 	},
 	"dependencies": {
 		"@react-navigation/drawer": "^6.1.8",
@@ -26,9 +27,11 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.9.0",
+		"@types/jest": "^27.0.2",
 		"@types/react": "~16.9.35",
 		"@types/react-native": "~0.63.2",
 		"@types/react-native-vector-icons": "^6.4.9",
+		"@types/react-test-renderer": "^17.0.1",
 		"@types/styled-components": "^5.1.15",
 		"@types/styled-components-react-native": "^5.1.1",
 		"@typescript-eslint/eslint-plugin": "^5.1.0",
@@ -41,8 +44,16 @@
 		"eslint-plugin-prettier": "^4.0.0",
 		"eslint-plugin-react": "^7.21.5",
 		"eslint-plugin-react-hooks": "^1.7.0",
+		"jest-expo": "^42.1.0",
 		"prettier": "^2.4.1",
+		"react-test-renderer": "^17.0.2",
 		"typescript": "~4.0.0"
 	},
-	"private": true
+	"private": true,
+	"jest": {
+		"preset": "jest-expo",
+		"setupFiles": [
+			"./__test__/setup.ts"
+		]
+	}
 }
