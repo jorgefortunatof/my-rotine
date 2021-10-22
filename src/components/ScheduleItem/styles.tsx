@@ -2,28 +2,28 @@ import styled, { css } from 'styled-components/native';
 import { colors, fonts, metrics } from '../../styles';
 
 type ContainerProps = {
-	size?: string;
+	isLastItem?: boolean;
 };
 
-export const Container = styled.TouchableOpacity<ContainerProps>`
-	align-items: center;
-	justify-content: center;
+export const Container = styled.View<ContainerProps>`
+	flex-direction: row;
+	justify-content: space-between;
 
-	padding: ${metrics.basePadding}px;
-	margin: 0 ${metrics.baseMargin}px;
+	margin-bottom: ${metrics.baseMargin}px;
+	padding: ${metrics.basePadding * 1.5}px;
 	border-radius: ${metrics.borderRadius}px;
 
 	background-color: ${colors.primary};
 
-	${({ size }) =>
-		size === 'medium' &&
+	${({ isLastItem }) =>
+		isLastItem &&
 		css`
-			margin: 0 ${metrics.baseMargin * 2}px;
-		`};
+			margin-bottom: 0;
+		`}
 `;
 
 export const Title = styled.Text`
-	font-size: ${fonts.large}px;
+	font-size: ${fonts.regular}px;
 	font-weight: bold;
 
 	color: ${colors.lightest};

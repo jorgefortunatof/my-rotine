@@ -7,4 +7,6 @@ export default {
 	light: '#898989',
 	lighter: '#D8D8D8',
 	lightest: '#FFFFFF',
+
+	translucent_background: '#00000099',
 };

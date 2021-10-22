@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-import Introduction from './Introduction';
+import FirstSteps from './FirstSteps';
 
 const Routes: React.FC = () => {
 	return (
 		<NavigationContainer>
-			<Introduction />
+			<FirstSteps />
 		</NavigationContainer>
 	);
 };
