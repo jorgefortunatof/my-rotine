@@ -10,7 +10,6 @@ export const Container = styled.TouchableOpacity<ContainerProps>`
 	justify-content: center;
 
 	padding: ${metrics.basePadding}px;
-	margin: 0 ${metrics.baseMargin}px;
 	border-radius: ${metrics.borderRadius}px;
 
 	background-color: ${colors.primary};

@@ -10,7 +10,8 @@ import {
 	Title,
 	Content,
 	Footer,
-	Arrow,
+	ForwardArrow,
+	BackArrow,
 	ArrowContainer,
 } from './styles';
 
@@ -31,8 +32,11 @@ const FirstStepsActivities: React.FC = () => {
 				</Title>
 			</Content>
 			<Footer>
+				<ArrowContainer onPress={() => navigate('FirstStepsSchedules', {})}>
+					<BackArrow />
+				</ArrowContainer>
 				<ArrowContainer onPress={() => navigate('Welcome', {})}>
-					<Arrow />
+					<ForwardArrow />
 				</ArrowContainer>
 			</Footer>
 		</Container>

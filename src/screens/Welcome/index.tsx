@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import ScheduleModal from '../../components/ScheduleModal';
 import Button from '../../components/Button';
 
 import {
@@ -37,8 +36,6 @@ const Welcome: React.FC = () => {
 					title="Iniciar"
 				/>
 			</Footer>
-
-			<ScheduleModal />
 		</Container>
 	);
 };

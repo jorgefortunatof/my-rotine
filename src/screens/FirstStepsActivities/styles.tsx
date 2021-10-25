@@ -45,8 +45,10 @@ export const Content = styled.View`
 `;
 
 export const Footer = styled.View`
-	align-items: flex-end;
-	justify-content: center;
+	flex-direction: row;
+
+	align-items: center;
+	justify-content: space-between;
 
 	height: ${hp(10)}px;
 	padding: ${metrics.basePadding / 2}px;
@@ -54,7 +56,13 @@ export const Footer = styled.View`
 	background-color: ${colors.darker};
 `;
 
-export const Arrow = styled(MaterialIcons).attrs({
+export const BackArrow = styled(MaterialIcons).attrs({
+	name: 'arrow-back',
+	color: colors.lightest,
+	size: wp(14),
+})``;
+
+export const ForwardArrow = styled(MaterialIcons).attrs({
 	name: 'arrow-forward',
 	color: colors.lightest,
 	size: wp(14),

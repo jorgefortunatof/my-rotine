@@ -7,6 +7,7 @@ export default {
 	baseMargin: wp(6),
 	basePadding: wp(4),
 	borderRadius: wp(1),
+	borderWidth: wp(0.5),
 
 	screenWidth: width < height ? width : height,
 	screenHeight: width < height ? height : width,
