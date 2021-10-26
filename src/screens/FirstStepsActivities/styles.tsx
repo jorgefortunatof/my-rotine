@@ -69,3 +69,19 @@ export const ForwardArrow = styled(MaterialIcons).attrs({
 })``;
 
 export const ArrowContainer = styled.TouchableOpacity``;
+
+export const List = styled.FlatList.attrs({})`
+	margin: ${metrics.baseMargin * 2}px 0 0 0;
+`;
+
+export const AddCircle = styled(MaterialIcons).attrs({
+	name: 'add-circle',
+	color: colors.lightest,
+	size: wp(12),
+})``;
+
+export const AddCircleContainer = styled.TouchableOpacity`
+	align-self: center;
+	margin: ${metrics.baseMargin}px;
+	padding: ${metrics.basePadding / 2}px;
+`;

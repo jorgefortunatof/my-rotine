@@ -2,6 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
 
+import ActivityItem from '../../components/ActivityItem';
+
 import {
 	Container,
 	Header,
@@ -13,10 +15,15 @@ import {
 	ForwardArrow,
 	BackArrow,
 	ArrowContainer,
+	List,
+	AddCircleContainer,
+	AddCircle,
 } from './styles';
 
 const FirstStepsActivities: React.FC = () => {
 	const { navigate } = useNavigation<NativeStackNavigationProp<any, any>>();
+
+	const activities = [0, 0, 0];
 
 	return (
 		<Container>
@@ -30,6 +37,17 @@ const FirstStepsActivities: React.FC = () => {
 				<Title>
 					Adicione as atividades que você deseja adicionar à sua rotina:
 				</Title>
+
+				<List
+					data={activities}
+					columnWrapperStyle={{ justifyContent: 'space-between' }}
+					numColumns={2}
+					renderItem={({ item, index }) => <ActivityItem />}
+				/>
+
+				<AddCircleContainer onPress={() => {}}>
+					<AddCircle />
+				</AddCircleContainer>
 			</Content>
 			<Footer>
 				<ArrowContainer onPress={() => navigate('FirstStepsSchedules', {})}>
