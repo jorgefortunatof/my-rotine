@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Checkbox from 'expo-checkbox';
-
 import Modal from '../Modal';
 import Input from '../Input';
 import MaskedInput from '../MaskedInput';
@@ -9,7 +7,6 @@ import Button from '../Button';
 
 import {
 	Container,
-	// CheckBox,
 	CheckBoxContainer,
 	CheckBoxTitle,
 	PickerSelect,
@@ -35,7 +32,6 @@ const ActivityModal: React.FC<ActivityModalProps> = ({ visible, onClose }) => {
 					onChangeText={() => {}}
 				/>
 				<CheckBoxContainer>
-					<Checkbox />
 					<CheckBoxTitle>atividade recorrente</CheckBoxTitle>
 				</CheckBoxContainer>
 				<MaskedInput
