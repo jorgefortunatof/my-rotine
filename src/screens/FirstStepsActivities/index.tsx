@@ -1,7 +1,8 @@
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import React from 'react';
 
+import ActivityModal from '../../components/ActivityModal';
 import ActivityItem from '../../components/ActivityItem';
 
 import {
@@ -23,6 +24,7 @@ import {
 const FirstStepsActivities: React.FC = () => {
 	const { navigate } = useNavigation<NativeStackNavigationProp<any, any>>();
 
+	const [showActivityModal, setShowActivityModal] = useState(true);
 	const activities = [0, 0, 0];
 
 	return (
@@ -57,6 +59,11 @@ const FirstStepsActivities: React.FC = () => {
 					<ForwardArrow />
 				</ArrowContainer>
 			</Footer>
+
+			<ActivityModal
+				visible={showActivityModal}
+				onClose={() => setShowActivityModal(false)}
+			/>
 		</Container>
 	);
 };

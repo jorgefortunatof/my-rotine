@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
-import { ColorValue, TextInput as TI } from 'react-native';
+import { MaskedTextInput } from 'react-native-mask-text';
+import { ColorValue } from 'react-native';
 import { colors, fonts, metrics } from '../../styles';
 
 export const Container = styled.View`
@@ -9,7 +10,7 @@ export const Container = styled.View`
 	border-color: ${colors.lighter};
 `;
 
-export const TextInput = styled(TI).attrs({
+export const TextInput = styled(MaskedTextInput).attrs({
 	placeholderTextColor: colors.light as ColorValue,
 })`
 	color: ${colors.lightest};

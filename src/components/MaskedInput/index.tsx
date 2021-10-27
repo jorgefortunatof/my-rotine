@@ -3,18 +3,24 @@ import { TextInputProps } from 'react-native';
 
 import { Container, TextInput, Label } from './styles';
 
-type InputProps = TextInputProps & {
+type MaskedInputProps = TextInputProps & {
 	label: string;
+	mask: string;
 	onChangeText: (text: string) => void;
 };
 
-const Input: React.FC<InputProps> = ({ label, onChangeText, ...rest }) => {
+const MaskedInput: React.FC<MaskedInputProps> = ({
+	label,
+	mask,
+	onChangeText,
+	...rest
+}) => {
 	return (
 		<Container>
 			<Label>{label}</Label>
-			<TextInput onChangeText={onChangeText} {...rest} />
+			<TextInput mask={mask} onChangeText={onChangeText} {...rest} />
 		</Container>
 	);
 };
 
-export default Input;
+export default MaskedInput;

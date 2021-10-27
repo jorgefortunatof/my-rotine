@@ -1,18 +1,18 @@
 import React from 'react';
 
 import Modal from '../Modal';
-import Input from '../Input';
+import MaskedInput from '../MaskedInput';
 import Button from '../Button';
 import WeekDaySelector from '../WeekDaySelector';
 
 import { Container } from './styles';
 
-type ScheduleModal = {
+type ScheduleModalProps = {
 	visible: boolean;
 	onClose: () => void;
 };
 
-const ScheduleModal: React.FC<ScheduleModal> = ({ visible, onClose }) => {
+const ScheduleModal: React.FC<ScheduleModalProps> = ({ visible, onClose }) => {
 	return (
 		<Modal
 			hasHeader
@@ -21,13 +21,13 @@ const ScheduleModal: React.FC<ScheduleModal> = ({ visible, onClose }) => {
 			visible={visible}
 		>
 			<Container>
-				<Input
+				<MaskedInput
 					placeholder="00:00"
 					label="das:"
 					mask="99:99"
 					onChangeText={() => {}}
 				/>
-				<Input
+				<MaskedInput
 					placeholder="00:00"
 					label="até as:"
 					mask="99:99"
