@@ -34,7 +34,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({ visible, onClose }) => {
 					onChangeText={() => {}}
 				/>
 				<WeekDaySelector />
-				<Button title="Adicionar" onPress={() => {}} />
+				<Button fontSize="regular" title="Adicionar" onPress={() => {}} />
 			</Container>
 		</Modal>
 	);

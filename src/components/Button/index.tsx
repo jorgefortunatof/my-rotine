@@ -5,13 +5,14 @@ import { Container, Title } from './styles';
 type ButtonProps = {
 	onPress: () => void;
 	title: string;
+	fontSize: 'large' | 'small' | 'medium' | 'regular';
 	size?: string;
 };
 
-const Button: React.FC<ButtonProps> = ({ title, onPress, size }) => {
+const Button: React.FC<ButtonProps> = ({ title, onPress, size, fontSize }) => {
 	return (
 		<Container size={size} onPress={onPress}>
-			<Title>{title}</Title>
+			<Title fontSize={fontSize}>{title}</Title>
 		</Container>
 	);
 };

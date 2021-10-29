@@ -60,7 +60,7 @@ const ActivityModal: React.FC<ActivityModalProps> = ({ visible, onClose }) => {
 					]}
 				/>
 
-				<Button title="Adicionar" onPress={() => {}} />
+				<Button fontSize="regular" title="Adicionar" onPress={() => {}} />
 			</Container>
 		</Modal>
 	);

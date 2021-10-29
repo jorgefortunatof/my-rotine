@@ -32,8 +32,9 @@ const Welcome: React.FC = () => {
 				<Tip>clique em iniciar para prosseguir</Tip>
 				<Button
 					size="medium"
-					onPress={() => navigate('FirstStepsSchedules', {})}
 					title="Iniciar"
+					fontSize="large"
+					onPress={() => navigate('FirstStepsSchedules', {})}
 				/>
 			</Footer>
 		</Container>

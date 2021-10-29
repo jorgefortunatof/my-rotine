@@ -21,9 +21,16 @@ export const Container = styled.TouchableOpacity<ContainerProps>`
 		`};
 `;
 
-export const Title = styled.Text`
-	font-size: ${fonts.large}px;
-	font-weight: bold;
+type TitleProps = {
+	fontSize: 'large' | 'small' | 'medium' | 'regular';
+};
 
+export const Title = styled.Text<TitleProps>`
+	font-weight: bold;
 	color: ${colors.lightest};
+
+	${({ fontSize }) =>
+		css`
+			font-size: ${fonts[fontSize]}px;
+		`}
 `;
