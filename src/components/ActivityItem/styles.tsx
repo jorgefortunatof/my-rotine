@@ -1,7 +1,11 @@
 import styled from 'styled-components/native';
+import {
+	Menu as MaterialMenu,
+	MenuItem as MaterialMenuItem,
+} from 'react-native-material-menu';
 import { colors, fonts, metrics } from '../../styles';
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
 	width: 165px;
 
 	align-items: center;
@@ -48,3 +52,10 @@ export const Hour = styled.Text`
 
 	color: ${colors.dark};
 `;
+
+export const Menu = styled(MaterialMenu)`
+	margin-top: ${metrics.baseMargin / 2}px;
+	margin-left: ${metrics.baseMargin / 2}px;
+`;
+
+export const MenuItem = styled(MaterialMenuItem)``;

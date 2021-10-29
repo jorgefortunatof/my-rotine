@@ -38,6 +38,7 @@ const FirstStepsSchedules: React.FC = () => {
 
 			<Content>
 				<Title>Adicione seus horários livres da semana:</Title>
+
 				<List
 					data={schedules}
 					renderItem={({ item, index }) => (
