@@ -1,16 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Modal from '../Modal';
 import Input from '../Input';
 import MaskedInput from '../MaskedInput';
 import Button from '../Button';
+import Checkbox from '../Checkbox';
+import PickerSelect from '../PickerSelect';
 
-import {
-	Container,
-	CheckBoxContainer,
-	CheckBoxTitle,
-	PickerSelect,
-} from './styles';
+import { Container, CheckBoxContainer, CheckBoxTitle } from './styles';
 
 type ActivityModalProps = {
 	visible: boolean;
@@ -18,6 +15,8 @@ type ActivityModalProps = {
 };
 
 const ActivityModal: React.FC<ActivityModalProps> = ({ visible, onClose }) => {
+	const [recurringActivity, setRecurringActivity] = useState(false);
+
 	return (
 		<Modal
 			hasHeader
@@ -27,20 +26,32 @@ const ActivityModal: React.FC<ActivityModalProps> = ({ visible, onClose }) => {
 		>
 			<Container>
 				<Input
-					placeholder=""
+					placeholder="atividade"
 					label="nome da atividade: "
 					onChangeText={() => {}}
 				/>
-				<CheckBoxContainer>
+
+				<CheckBoxContainer
+					onPress={() => setRecurringActivity(!recurringActivity)}
+				>
+					<Checkbox
+						value={recurringActivity}
+						onChangeValue={(value) => setRecurringActivity(value)}
+					/>
 					<CheckBoxTitle>atividade recorrente</CheckBoxTitle>
 				</CheckBoxContainer>
-				<MaskedInput
-					placeholder="00"
-					label="quantidade de horas:"
-					mask="9999"
-					onChangeText={() => {}}
-				/>
+
+				{!recurringActivity && (
+					<MaskedInput
+						placeholder="0"
+						label="quantidade de horas:"
+						mask="9999"
+						onChangeText={() => {}}
+					/>
+				)}
+
 				<PickerSelect
+					label="categoria:"
 					onValueChange={() => {}}
 					placeholder={{ label: 'Selecione uma categoria...', value: null }}
 					items={[

@@ -24,7 +24,7 @@ import {
 const FirstStepsActivities: React.FC = () => {
 	const { navigate } = useNavigation<NativeStackNavigationProp<any, any>>();
 
-	const [showActivityModal, setShowActivityModal] = useState(true);
+	const [showActivityModal, setShowActivityModal] = useState(false);
 	const activities = [0, 0, 0];
 
 	return (
@@ -47,7 +47,7 @@ const FirstStepsActivities: React.FC = () => {
 					renderItem={({ item, index }) => <ActivityItem />}
 				/>
 
-				<AddCircleContainer onPress={() => {}}>
+				<AddCircleContainer onPress={() => setShowActivityModal(true)}>
 					<AddCircle />
 				</AddCircleContainer>
 			</Content>

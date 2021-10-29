@@ -1,18 +1,21 @@
 import styled from 'styled-components/native';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-
-import PS from 'react-native-picker-select';
-import { colors, fonts } from '../../styles';
+import { colors, fonts, metrics } from '../../styles';
 
 export const Container = styled.View`
 	width: ${wp(70)}px;
 `;
 
-export const CheckBoxContainer = styled.View``;
+export const CheckBoxContainer = styled.TouchableOpacity`
+	flex-direction: row;
+	align-items: center;
+
+	margin-bottom: ${metrics.baseMargin}px;
+`;
 
 export const CheckBoxTitle = styled.Text`
 	color: ${colors.lightest};
 	font-size: ${fonts.medium}px;
-`;
 
-export const PickerSelect = PS;
+	margin-left: ${metrics.baseMargin / 2}px;
+`;
