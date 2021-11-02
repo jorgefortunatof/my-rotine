@@ -40,3 +40,7 @@ export const DayButtonTitle = styled.Text<DayButtonTitleProps>`
 			color: ${colors.primary};
 		`}
 `;
+
+export const Error = styled.Text`
+	color: ${colors.error};
+`;

@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
 import { Schedule } from '../types/Schedule';
 import { editItem } from '../utils/list';
+import { generateUuid } from '../utils/uuid';
 
 type SchedulesContextData = {
 	schedules: Schedule[];
@@ -16,7 +17,7 @@ const SchedulesProvider: React.FC = ({ children }) => {
 
 	const addSchedule = useCallback(
 		(schedule) => {
-			setSchedules([...schedules, { ...schedule, id: String(Math.random()) }]);
+			setSchedules([...schedules, { ...schedule, id: generateUuid() }]);
 		},
 		[schedules, setSchedules],
 	);

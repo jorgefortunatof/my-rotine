@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Modal from '../Modal';
 import MaskedInput from '../MaskedInput';
 import Button from '../Button';
@@ -6,6 +6,13 @@ import WeekDaySelector from '../WeekDaySelector';
 import { Container } from './styles';
 import { Schedule } from '../../types/Schedule';
 import { useSchedules } from '../../hooks/schedules';
+import { validateHourInterval } from '../../utils/hour';
+
+type ScheduleError = {
+	initialHour: string;
+	finalHour: string;
+	weekDays: string;
+};
 
 type ScheduleModalProps = {
 	visible: boolean;
@@ -21,10 +28,33 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
 	form,
 	setFormValue,
 }) => {
-	const { addSchedule, editSchedule } = useSchedules();
 	const isEditing = !!form.id;
+	const { addSchedule, editSchedule } = useSchedules();
+	const [errors, setErrors] = useState({} as ScheduleError);
+
+	const validateForm = useCallback(() => {
+		const hourValidation = validateHourInterval(
+			form.initialHour,
+			form.finalHour,
+		);
+		if (hourValidation) {
+			setErrors(hourValidation as ScheduleError);
+			return false;
+		}
+
+		if (form.weekDays.length === 0) {
+			setErrors({
+				weekDays: 'selecione ao menos um dia da semana',
+			} as ScheduleError);
+			return false;
+		}
+
+		return true;
+	}, [form.finalHour, form.initialHour, form.weekDays.length]);
 
 	const handlePress = useCallback(() => {
+		if (!validateForm()) return;
+
 		if (form.id) {
 			editSchedule(form);
 			onClose();
@@ -32,7 +62,11 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
 			addSchedule(form);
 			onClose();
 		}
-	}, [addSchedule, editSchedule, form, onClose]);
+	}, [addSchedule, editSchedule, form, onClose, validateForm]);
+
+	useEffect(() => {
+		setErrors({} as ScheduleError);
+	}, [visible]);
 
 	return (
 		<Modal
@@ -52,6 +86,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
 					label="das:"
 					mask="99:99"
 					keyboardType="numeric"
+					error={errors.initialHour}
 				/>
 
 				<MaskedInput
@@ -64,6 +99,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
 					label="até as:"
 					mask="99:99"
 					keyboardType="numeric"
+					error={errors.finalHour}
 				/>
 
 				<WeekDaySelector
@@ -71,6 +107,7 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
 					onSelectionChange={(days) => {
 						setFormValue({ weekDays: days } as Schedule);
 					}}
+					error={errors.weekDays}
 				/>
 				<Button
 					fontSize="regular"

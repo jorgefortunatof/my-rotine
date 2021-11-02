@@ -45,7 +45,7 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ isLastItem, item }) => {
 			onRequestClose={hideMenu}
 			anchor={
 				<Container onPress={showMenu} isLastItem={isLastItem}>
-					<Title>{item.weekDays.join('-')}</Title>
+					<Title>{item.weekDays.join(', ')}</Title>
 					<Title>
 						{item.initialHour}h-{item.finalHour}h
 					</Title>

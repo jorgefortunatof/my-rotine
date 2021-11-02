@@ -28,6 +28,13 @@ const SchedulesModalProvider: React.FC = ({ children }) => {
 	const showSchedulesModal = useCallback((itemToEdit?: Schedule) => {
 		if (itemToEdit) {
 			setForm(itemToEdit);
+		} else {
+			setForm({
+				id: '',
+				finalHour: '',
+				initialHour: '',
+				weekDays: [],
+			});
 		}
 
 		setVisible(true);

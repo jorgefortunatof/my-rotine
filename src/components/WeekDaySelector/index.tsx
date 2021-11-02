@@ -6,16 +6,19 @@ import {
 	DaysContainer,
 	DayButton,
 	DayButtonTitle,
+	Error,
 } from './styles';
 
 type WeekDaySelectorProps = {
 	onSelectionChange: (days: string[]) => void;
 	selection: string[];
+	error?: string;
 };
 
 const WeekDaySelector: React.FC<WeekDaySelectorProps> = ({
 	onSelectionChange,
 	selection,
+	error,
 }) => {
 	const days = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom'];
 
@@ -43,8 +46,13 @@ const WeekDaySelector: React.FC<WeekDaySelectorProps> = ({
 					</DayButton>
 				))}
 			</DaysContainer>
+			{!!error && <Error>{error}</Error>}
 		</Container>
 	);
+};
+
+WeekDaySelector.defaultProps = {
+	error: '',
 };
 
 export default WeekDaySelector;

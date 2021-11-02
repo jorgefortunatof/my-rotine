@@ -8,5 +8,9 @@ export default {
 	lighter: '#B8B8B8',
 	lightest: '#FFFFFF',
 
+	error: '#fcb3b3',
+	warn: '#FCFFB3',
+	info: '#33B3FC',
+
 	translucent_background: '#00000099',
 };
