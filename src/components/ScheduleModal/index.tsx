@@ -34,8 +34,6 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
 		}
 	}, [addSchedule, editSchedule, form, onClose]);
 
-	console.log({ form });
-
 	return (
 		<Modal
 			hasHeader
@@ -45,10 +43,9 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
 		>
 			<Container>
 				<MaskedInput
+					defaultValue={form.initialHour}
 					value={form.initialHour}
 					onChangeText={(text) => {
-						if (!text && form.initialHour.length > 1) return;
-
 						setFormValue({ initialHour: text } as Schedule);
 					}}
 					placeholder="00:00"
@@ -58,10 +55,9 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
 				/>
 
 				<MaskedInput
+					defaultValue={form.finalHour}
 					value={form.finalHour}
 					onChangeText={(text) => {
-						if (!text && form.finalHour.length > 1) return;
-
 						setFormValue({ finalHour: text } as Schedule);
 					}}
 					placeholder="00:00"
