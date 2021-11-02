@@ -16,7 +16,7 @@ const SchedulesProvider: React.FC = ({ children }) => {
 
 	const addSchedule = useCallback(
 		(schedule) => {
-			setSchedules([...schedules, schedule]);
+			setSchedules([...schedules, { ...schedule, id: String(Math.random()) }]);
 		},
 		[schedules, setSchedules],
 	);

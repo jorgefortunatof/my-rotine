@@ -3,7 +3,7 @@ import ScheduleModal from '../components/ScheduleModal';
 import { Schedule } from '../types/Schedule';
 
 type SchedulesModalContextData = {
-	showSchedulesModal: () => void;
+	showSchedulesModal: (itemToEdit?: Schedule) => void;
 	setFormValue: (value: Schedule) => void;
 };
 
@@ -32,8 +32,6 @@ const SchedulesModalProvider: React.FC = ({ children }) => {
 
 		setVisible(true);
 	}, []);
-
-	console.log({ form });
 
 	return (
 		<SchedulesModalContext.Provider

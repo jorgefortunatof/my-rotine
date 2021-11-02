@@ -1,13 +1,10 @@
 import React, { useCallback } from 'react';
-
 import Modal from '../Modal';
 import MaskedInput from '../MaskedInput';
 import Button from '../Button';
 import WeekDaySelector from '../WeekDaySelector';
-
 import { Container } from './styles';
 import { Schedule } from '../../types/Schedule';
-
 import { useSchedules } from '../../hooks/schedules';
 
 type ScheduleModalProps = {
@@ -30,10 +27,14 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
 	const handlePress = useCallback(() => {
 		if (form.id) {
 			editSchedule(form);
+			onClose();
 		} else {
 			addSchedule(form);
+			onClose();
 		}
-	}, [addSchedule, editSchedule, form]);
+	}, [addSchedule, editSchedule, form, onClose]);
+
+	console.log({ form });
 
 	return (
 		<Modal
@@ -44,25 +45,31 @@ const ScheduleModal: React.FC<ScheduleModalProps> = ({
 		>
 			<Container>
 				<MaskedInput
+					value={form.initialHour}
+					onChangeText={(text) => {
+						if (!text && form.initialHour.length > 1) return;
+
+						setFormValue({ initialHour: text } as Schedule);
+					}}
 					placeholder="00:00"
 					label="das:"
 					mask="99:99"
 					keyboardType="numeric"
-					value={form.initialHour}
-					onChangeText={(text) => {
-						setFormValue({ initialHour: text } as Schedule);
-					}}
 				/>
+
 				<MaskedInput
+					value={form.finalHour}
+					onChangeText={(text) => {
+						if (!text && form.finalHour.length > 1) return;
+
+						setFormValue({ finalHour: text } as Schedule);
+					}}
 					placeholder="00:00"
 					label="até as:"
 					mask="99:99"
 					keyboardType="numeric"
-					value={form.finalHour}
-					onChangeText={(text) => {
-						setFormValue({ finalHour: text } as Schedule);
-					}}
 				/>
+
 				<WeekDaySelector
 					selection={form.weekDays}
 					onSelectionChange={(days) => {
