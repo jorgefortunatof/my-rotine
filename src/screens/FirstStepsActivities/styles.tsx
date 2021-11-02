@@ -4,7 +4,9 @@ import {
 	heightPercentageToDP as hp,
 	widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import { FlatList } from 'react-native';
 import { colors, fonts, metrics } from '../../styles';
+import { Activity } from '../../types/Activity';
 
 export const Container = styled.SafeAreaView`
 	flex: 1;
@@ -70,7 +72,10 @@ export const ForwardArrow = styled(MaterialIcons).attrs({
 
 export const ArrowContainer = styled.TouchableOpacity``;
 
-export const List = styled.FlatList.attrs({})`
+export const List = styled(FlatList as new () => FlatList<Activity>).attrs({
+	columnWrapperStyle: { justifyContent: 'space-between' },
+	numColumns: 2,
+})`
 	margin: ${metrics.baseMargin * 2}px 0 0 0;
 `;
 

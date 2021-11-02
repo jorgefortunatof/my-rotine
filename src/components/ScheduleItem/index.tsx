@@ -10,8 +10,6 @@ type ScheduleItemProps = {
 };
 
 const ScheduleItem: React.FC<ScheduleItemProps> = ({ isLastItem, item }) => {
-	const menuRef = useRef(null);
-
 	const { showSchedulesModal } = useSchedulesModal();
 	const { removeSchedule } = useSchedules();
 
@@ -39,14 +37,13 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ isLastItem, item }) => {
 
 	return (
 		<Menu
-			ref={menuRef}
 			visible={menuVisible}
 			animationDuration={menuVisible ? 300 : 0}
 			onRequestClose={hideMenu}
 			anchor={
 				<Container onPress={showMenu} isLastItem={isLastItem}>
-					<Title>{item.weekDays.join(', ')}</Title>
-					<Title>
+					<Title textAlign="left">{item.weekDays.join(', ')}</Title>
+					<Title textAlign="right">
 						{item.initialHour}h-{item.finalHour}h
 					</Title>
 				</Container>

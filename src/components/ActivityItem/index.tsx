@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Activity } from '../../types/Activity';
 
 import {
 	Container,
@@ -10,7 +11,11 @@ import {
 	MenuItem,
 } from './styles';
 
-const ActivityItem: React.FC = () => {
+type ActivityItemProps = {
+	item: Activity;
+};
+
+const ActivityItem: React.FC<ActivityItemProps> = ({ item }) => {
 	const [menuVisible, setMenuVisible] = useState(false);
 
 	const showMenu = () => {
@@ -25,12 +30,13 @@ const ActivityItem: React.FC = () => {
 		<Menu
 			visible={menuVisible}
 			onRequestClose={hideMenu}
+			animationDuration={menuVisible ? 300 : 0}
 			anchor={
 				<Container onPress={showMenu}>
-					<Hour>40h</Hour>
-					<Title>Curso React Native</Title>
+					{!!item.timeToComplete && <Hour>{item.timeToComplete}h</Hour>}
+					<Title>{item.name}</Title>
 					<LabelContainer>
-						<Label>Estudo</Label>
+						<Label>{item.category.label}</Label>
 					</LabelContainer>
 				</Container>
 			}

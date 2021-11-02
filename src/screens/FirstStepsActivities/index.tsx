@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import ActivityModal from '../../components/ActivityModal';
+import { useActivities } from '../../hooks/activities';
 import ActivityItem from '../../components/ActivityItem';
 
 import {
@@ -23,9 +23,7 @@ import {
 
 const FirstStepsActivities: React.FC = () => {
 	const { navigate } = useNavigation<NativeStackNavigationProp<any, any>>();
-
-	const [showActivityModal, setShowActivityModal] = useState(false);
-	const activities = [0, 0, 0];
+	const { activities } = useActivities();
 
 	return (
 		<Container>
@@ -35,6 +33,7 @@ const FirstStepsActivities: React.FC = () => {
 					Para montar sua rotina, vamos precisar de algumas informações
 				</Description>
 			</Header>
+
 			<Content>
 				<Title>
 					Adicione as atividades que você deseja adicionar à sua rotina:
@@ -42,15 +41,14 @@ const FirstStepsActivities: React.FC = () => {
 
 				<List
 					data={activities}
-					columnWrapperStyle={{ justifyContent: 'space-between' }}
-					numColumns={2}
-					renderItem={({ item, index }) => <ActivityItem />}
+					renderItem={({ item, index }) => <ActivityItem item={item} />}
 				/>
 
-				<AddCircleContainer onPress={() => setShowActivityModal(true)}>
+				<AddCircleContainer onPress={() => {}}>
 					<AddCircle />
 				</AddCircleContainer>
 			</Content>
+
 			<Footer>
 				<ArrowContainer onPress={() => navigate('FirstStepsSchedules', {})}>
 					<BackArrow />
@@ -59,11 +57,6 @@ const FirstStepsActivities: React.FC = () => {
 					<ForwardArrow />
 				</ArrowContainer>
 			</Footer>
-
-			<ActivityModal
-				visible={showActivityModal}
-				onClose={() => setShowActivityModal(false)}
-			/>
 		</Container>
 	);
 };

@@ -26,11 +26,23 @@ export const Container = styled.TouchableOpacity<ContainerProps>`
 		`}
 `;
 
-export const Title = styled.Text`
-	font-size: ${fonts.regular}px;
+type TitleProps = {
+	textAlign: string;
+};
+
+export const Title = styled.Text<TitleProps>`
+	flex: 1;
+	align-self: center;
+
+	font-size: ${fonts.medium}px;
 	font-weight: bold;
 
 	color: ${colors.lightest};
+
+	${({ textAlign }) =>
+		css`
+			text-align: ${textAlign};
+		`}
 `;
 
 export const Menu = styled(MaterialMenu)`
