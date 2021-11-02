@@ -4,6 +4,8 @@ import {
 	heightPercentageToDP as hp,
 	widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import { FlatList } from 'react-native';
+import { Schedule } from '../../types/Schedule';
 import { colors, fonts, metrics } from '../../styles';
 
 export const Container = styled.SafeAreaView`
@@ -70,7 +72,7 @@ export const ForwardArrow = styled(MaterialIcons).attrs({
 
 export const ArrowContainer = styled.TouchableOpacity``;
 
-export const List = styled.FlatList.attrs({})`
+export const List = styled(FlatList as new () => FlatList<Schedule>)`
 	margin: ${metrics.baseMargin * 2}px 0 0 0;
 `;
 

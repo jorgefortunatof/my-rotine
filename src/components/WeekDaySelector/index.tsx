@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 
 import {
 	Container,
@@ -8,20 +8,27 @@ import {
 	DayButtonTitle,
 } from './styles';
 
-const WeekDaySelector: React.FC = () => {
-	const [selectedDays, setSelectedDays] = useState<string[]>([]);
+type WeekDaySelectorProps = {
+	onSelectionChange: (days: string[]) => void;
+	selection: string[];
+};
+
+const WeekDaySelector: React.FC<WeekDaySelectorProps> = ({
+	onSelectionChange,
+	selection,
+}) => {
 	const days = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom'];
 
 	const handleDaySelected = useCallback(
 		(day) => {
-			if (selectedDays.includes(day)) {
-				const selectedDaysFiltered = selectedDays.filter((d) => d !== day);
-				setSelectedDays(selectedDaysFiltered);
+			if (selection.includes(day)) {
+				const selectionFiltered = selection.filter((d) => d !== day);
+				onSelectionChange(selectionFiltered);
 			} else {
-				setSelectedDays([...selectedDays, day]);
+				onSelectionChange([...selection, day]);
 			}
 		},
-		[selectedDays, setSelectedDays],
+		[onSelectionChange, selection],
 	);
 
 	return (
@@ -30,7 +37,7 @@ const WeekDaySelector: React.FC = () => {
 			<DaysContainer>
 				{days.map((day) => (
 					<DayButton key={day} onPress={() => handleDaySelected(day)}>
-						<DayButtonTitle selected={selectedDays.includes(day)}>
+						<DayButtonTitle selected={selection.includes(day)}>
 							{day}
 						</DayButtonTitle>
 					</DayButton>

@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-
+import { Schedule } from '../../types/Schedule';
 import { Container, Title, Menu, MenuItem } from './styles';
 
 type ScheduleItemProps = {
-	// weekDays: string;
-	// timePeriod: string;
+	item: Schedule;
 	isLastItem?: boolean;
 };
 
-const ScheduleItem: React.FC<ScheduleItemProps> = ({ isLastItem }) => {
+const ScheduleItem: React.FC<ScheduleItemProps> = ({ isLastItem, item }) => {
 	const [menuVisible, setMenuVisible] = useState(false);
 
 	const showMenu = () => {

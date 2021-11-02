@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-
-import ScheduleModal from '../../components/ScheduleModal';
+import { useSchedules } from '../../hooks/schedules';
+import { useSchedulesModal } from '../../hooks/schedulesModal';
 import ScheduleItem from '../../components/ScheduleItem';
 
 import {
@@ -22,10 +22,9 @@ import {
 } from './styles';
 
 const FirstStepsSchedules: React.FC = () => {
+	const { schedules } = useSchedules();
+	const { showSchedulesModal } = useSchedulesModal();
 	const { navigate } = useNavigation<NativeStackNavigationProp<any, any>>();
-
-	const [scheduleModalVisible, setScheduleModalVisible] = useState(false);
-	const schedules = [0, 0, 0];
 
 	return (
 		<Container>
@@ -41,12 +40,16 @@ const FirstStepsSchedules: React.FC = () => {
 
 				<List
 					data={schedules}
+					keyExtractor={(item) => item.id}
 					renderItem={({ item, index }) => (
-						<ScheduleItem isLastItem={index + 1 === schedules.length} />
+						<ScheduleItem
+							item={item}
+							isLastItem={index + 1 === schedules.length}
+						/>
 					)}
 				/>
 
-				<AddCircleContainer onPress={() => setScheduleModalVisible(true)}>
+				<AddCircleContainer onPress={() => showSchedulesModal()}>
 					<AddCircle />
 				</AddCircleContainer>
 			</Content>
@@ -59,11 +62,6 @@ const FirstStepsSchedules: React.FC = () => {
 					<ForwardArrow />
 				</ArrowContainer>
 			</Footer>
-
-			<ScheduleModal
-				visible={scheduleModalVisible}
-				onClose={() => setScheduleModalVisible(false)}
-			/>
 		</Container>
 	);
 };
