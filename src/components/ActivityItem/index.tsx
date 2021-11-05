@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Activity } from '../../types/Activity';
+import { Activity, CategoryEnum } from '../../types/Activity';
 
 import {
 	Container,
@@ -17,6 +17,7 @@ type ActivityItemProps = {
 
 const ActivityItem: React.FC<ActivityItemProps> = ({ item }) => {
 	const [menuVisible, setMenuVisible] = useState(false);
+	const categoryLabel = (CategoryEnum as any)[item.category] || '';
 
 	const showMenu = () => {
 		setMenuVisible(true);
@@ -36,7 +37,7 @@ const ActivityItem: React.FC<ActivityItemProps> = ({ item }) => {
 					{!!item.timeToComplete && <Hour>{item.timeToComplete}h</Hour>}
 					<Title>{item.name}</Title>
 					<LabelContainer>
-						<Label>{item.category.label}</Label>
+						<Label>{categoryLabel}</Label>
 					</LabelContainer>
 				</Container>
 			}

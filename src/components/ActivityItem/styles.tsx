@@ -41,6 +41,7 @@ export const LabelContainer = styled.View`
 
 export const Label = styled.Text`
 	font-size: ${fonts.small}px;
+	text-align: center;
 	color: ${colors.lightest};
 `;
 

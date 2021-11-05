@@ -35,12 +35,12 @@ const ActivitiesModalProvider: React.FC = ({ children }) => {
 			value={{ showActivitiesModal, setFormValue }}
 		>
 			{children}
-			{/* <ActivityModal
+			<ActivityModal
 				form={form}
 				setFormValue={setFormValue}
 				visible={visible}
 				onClose={() => setVisible(false)}
-			/> */}
+			/>
 		</ActivitiesModalContext.Provider>
 	);
 };

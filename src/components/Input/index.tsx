@@ -1,20 +1,25 @@
 import React from 'react';
 import { TextInputProps } from 'react-native';
 
-import { Container, TextInput, Label } from './styles';
+import { Container, TextInput, Label, Error } from './styles';
 
 type InputProps = TextInputProps & {
 	label: string;
-	onChangeText: (text: string) => void;
+	error?: string;
 };
 
-const Input: React.FC<InputProps> = ({ label, onChangeText, ...rest }) => {
+const Input: React.FC<InputProps> = ({ label, error, ...rest }) => {
 	return (
 		<Container>
 			<Label>{label}</Label>
-			<TextInput onChangeText={onChangeText} {...rest} />
+			<TextInput error={error} {...rest} />
+			{!!error && <Error>{error}</Error>}
 		</Container>
 	);
+};
+
+Input.defaultProps = {
+	error: '',
 };
 
 export default Input;

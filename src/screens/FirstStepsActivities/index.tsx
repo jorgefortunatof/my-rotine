@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-
+import { useActivitiesModal } from '../../hooks/activitiesModal';
 import { useActivities } from '../../hooks/activities';
 import ActivityItem from '../../components/ActivityItem';
 
@@ -23,6 +23,7 @@ import {
 
 const FirstStepsActivities: React.FC = () => {
 	const { navigate } = useNavigation<NativeStackNavigationProp<any, any>>();
+	const { showActivitiesModal } = useActivitiesModal();
 	const { activities } = useActivities();
 
 	return (
@@ -41,10 +42,10 @@ const FirstStepsActivities: React.FC = () => {
 
 				<List
 					data={activities}
-					renderItem={({ item, index }) => <ActivityItem item={item} />}
+					renderItem={({ item }) => <ActivityItem key={item.id} item={item} />}
 				/>
 
-				<AddCircleContainer onPress={() => {}}>
+				<AddCircleContainer onPress={() => showActivitiesModal()}>
 					<AddCircle />
 				</AddCircleContainer>
 			</Content>
