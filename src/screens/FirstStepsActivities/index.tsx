@@ -26,6 +26,8 @@ const FirstStepsActivities: React.FC = () => {
 	const { showActivitiesModal } = useActivitiesModal();
 	const { activities } = useActivities();
 
+	const disableGoNextScreen = activities.length === 0;
+
 	return (
 		<Container>
 			<Header>
@@ -54,8 +56,11 @@ const FirstStepsActivities: React.FC = () => {
 				<ArrowContainer onPress={() => navigate('FirstStepsSchedules', {})}>
 					<BackArrow />
 				</ArrowContainer>
-				<ArrowContainer onPress={() => navigate('Welcome', {})}>
-					<ForwardArrow />
+				<ArrowContainer
+					disabled={disableGoNextScreen}
+					onPress={() => navigate('Welcome', {})}
+				>
+					<ForwardArrow disabled={disableGoNextScreen} />
 				</ArrowContainer>
 			</Footer>
 		</Container>

@@ -14,17 +14,19 @@ import {
 	Content,
 	Footer,
 	ForwardArrow,
-	BackArrow,
 	ArrowContainer,
 	List,
 	AddCircle,
 	AddCircleContainer,
+	EmptyView,
 } from './styles';
 
 const FirstStepsSchedules: React.FC = () => {
 	const { schedules } = useSchedules();
 	const { showSchedulesModal } = useSchedulesModal();
 	const { navigate } = useNavigation<NativeStackNavigationProp<any, any>>();
+
+	const disableGoNextScreen = schedules.length === 0;
 
 	return (
 		<Container>
@@ -55,11 +57,12 @@ const FirstStepsSchedules: React.FC = () => {
 			</Content>
 
 			<Footer>
-				<ArrowContainer onPress={() => navigate('Welcome', {})}>
-					<BackArrow />
-				</ArrowContainer>
-				<ArrowContainer onPress={() => navigate('FirstStepsActivities', {})}>
-					<ForwardArrow />
+				<EmptyView />
+				<ArrowContainer
+					disabled={disableGoNextScreen}
+					onPress={() => navigate('FirstStepsActivities', {})}
+				>
+					<ForwardArrow disabled={disableGoNextScreen} />
 				</ArrowContainer>
 			</Footer>
 		</Container>

@@ -40,7 +40,7 @@ const ActivityModal: React.FC<ActivityModalProps> = ({
 		setErrors({} as ActivityError);
 
 		if (!form.name) {
-			setErrors({ name: 'insira o nome' } as ActivityError);
+			setErrors({ name: 'insira o nome da atividade' } as ActivityError);
 			return false;
 		}
 

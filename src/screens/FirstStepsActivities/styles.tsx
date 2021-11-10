@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {
 	heightPercentageToDP as hp,
@@ -64,11 +64,22 @@ export const BackArrow = styled(MaterialIcons).attrs({
 	size: wp(14),
 })``;
 
+type ForwardArrowProps = {
+	disabled: boolean;
+};
+
 export const ForwardArrow = styled(MaterialIcons).attrs({
 	name: 'arrow-forward',
-	color: colors.lightest,
 	size: wp(14),
-})``;
+})<ForwardArrowProps>`
+	color: ${colors.lightest};
+
+	${({ disabled }) =>
+		disabled &&
+		css`
+			color: ${colors.light};
+		`}
+`;
 
 export const ArrowContainer = styled.TouchableOpacity``;
 

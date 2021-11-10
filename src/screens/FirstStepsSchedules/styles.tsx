@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {
 	heightPercentageToDP as hp,
@@ -58,17 +58,22 @@ export const Footer = styled.View`
 	background-color: ${colors.darker};
 `;
 
-export const BackArrow = styled(MaterialIcons).attrs({
-	name: 'arrow-back',
-	color: colors.lightest,
-	size: wp(14),
-})``;
+type ForwardArrowProps = {
+	disabled: boolean;
+};
 
 export const ForwardArrow = styled(MaterialIcons).attrs({
 	name: 'arrow-forward',
-	color: colors.lightest,
 	size: wp(14),
-})``;
+})<ForwardArrowProps>`
+	color: ${colors.lightest};
+
+	${({ disabled }) =>
+		disabled &&
+		css`
+			color: ${colors.light};
+		`}
+`;
 
 export const ArrowContainer = styled.TouchableOpacity``;
 
@@ -87,3 +92,5 @@ export const AddCircleContainer = styled.TouchableOpacity`
 	margin: ${metrics.baseMargin}px;
 	padding: ${metrics.basePadding / 2}px;
 `;
+
+export const EmptyView = styled.View``;
