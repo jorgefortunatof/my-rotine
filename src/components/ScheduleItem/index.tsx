@@ -15,25 +15,25 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({ isLastItem, item }) => {
 
 	const [menuVisible, setMenuVisible] = useState(false);
 
-	const showMenu = () => {
+	const showMenu = useCallback(() => {
 		setMenuVisible(true);
-	};
+	}, []);
 
-	const hideMenu = () => {
+	const hideMenu = useCallback(() => {
 		setMenuVisible(false);
-	};
+	}, []);
 
 	const handleEdit = useCallback(() => {
 		hideMenu();
 
 		showSchedulesModal(item);
-	}, [item, showSchedulesModal]);
+	}, [hideMenu, item, showSchedulesModal]);
 
 	const handleRemove = useCallback(() => {
 		hideMenu();
 
 		removeSchedule(item.id);
-	}, [item.id, removeSchedule]);
+	}, [hideMenu, item.id, removeSchedule]);
 
 	return (
 		<Menu

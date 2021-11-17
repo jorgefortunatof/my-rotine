@@ -11,6 +11,7 @@ type PickerProps = PickerSelectProps & {
 
 const PickerSelect: React.FC<PickerProps> = ({
 	onValueChange,
+	value,
 	items,
 	placeholder,
 	label,
@@ -21,6 +22,7 @@ const PickerSelect: React.FC<PickerProps> = ({
 			<Content error={!!error}>
 				<Label>{label}</Label>
 				<Picker
+					useNativeAndroidPickerStyle={false}
 					style={{
 						inputIOS: {
 							fontSize: fonts.regular,
@@ -43,9 +45,10 @@ const PickerSelect: React.FC<PickerProps> = ({
 						},
 					}}
 					Icon={() => <ArrowDown />}
-					onValueChange={onValueChange}
 					placeholder={placeholder}
 					items={items}
+					onValueChange={onValueChange}
+					value={value}
 				/>
 			</Content>
 			{!!error && <Error>{error}</Error>}

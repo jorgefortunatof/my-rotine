@@ -6,6 +6,7 @@ import {
 import { colors, fonts, metrics } from '../../styles';
 
 export const Container = styled.TouchableOpacity`
+	min-height: 110px;
 	width: 165px;
 
 	align-items: center;

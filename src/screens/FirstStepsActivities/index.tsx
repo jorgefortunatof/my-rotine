@@ -44,7 +44,8 @@ const FirstStepsActivities: React.FC = () => {
 
 				<List
 					data={activities}
-					renderItem={({ item }) => <ActivityItem key={item.id} item={item} />}
+					keyExtractor={(item) => item.id}
+					renderItem={({ item }) => <ActivityItem item={item} />}
 				/>
 
 				<AddCircleContainer onPress={() => showActivitiesModal()}>

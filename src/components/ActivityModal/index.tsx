@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import Modal from '../Modal';
 import Input from '../Input';
@@ -31,9 +31,7 @@ const ActivityModal: React.FC<ActivityModalProps> = ({
 	setFormValue,
 }) => {
 	const { addActivity, editActivity } = useActivities();
-	const [recurringActivity, setRecurringActivity] = useState(
-		!!form.timeToComplete,
-	);
+	const [recurringActivity, setRecurringActivity] = useState(false);
 	const [errors, setErrors] = useState({} as ActivityError);
 
 	const validateForm = useCallback(() => {
@@ -72,11 +70,20 @@ const ActivityModal: React.FC<ActivityModalProps> = ({
 		onClose();
 	}, [validateForm, form, onClose, editActivity, addActivity]);
 
+	useEffect(() => {
+		if (form.id) {
+			setRecurringActivity(!form.timeToComplete);
+		}
+	}, [form.id, form.timeToComplete, visible]);
+
 	return (
 		<Modal
 			hasHeader
 			title="Adicione seus horários"
-			onClose={() => onClose()}
+			onClose={() => {
+				onClose();
+				setRecurringActivity(false);
+			}}
 			visible={visible}
 		>
 			<Container>
@@ -123,20 +130,24 @@ const ActivityModal: React.FC<ActivityModalProps> = ({
 				)}
 
 				<PickerSelect
-					label="categoria:"
+					items={[
+						{ label: 'Estudos', value: 'estudos' },
+						{ label: 'Atividades Físicas', value: 'atividades-fisicas' },
+					]}
 					value={form.category}
 					onValueChange={(value) =>
 						setFormValue({ category: value } as Activity)
 					}
 					placeholder={{ label: 'Selecione uma categoria...', value: null }}
-					items={[
-						{ label: 'Estudos', value: 'estudos' },
-						{ label: 'Atividades Físicas', value: 'atividades-fisicas' },
-					]}
+					label="categoria:"
 					error={errors.category}
 				/>
 
-				<Button fontSize="regular" title="Adicionar" onPress={handlePress} />
+				<Button
+					fontSize="regular"
+					title={form.id ? 'Editar' : 'Adicionar'}
+					onPress={handlePress}
+				/>
 			</Container>
 		</Modal>
 	);
