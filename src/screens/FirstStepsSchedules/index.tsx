@@ -60,7 +60,7 @@ const FirstStepsSchedules: React.FC = () => {
 				<EmptyView />
 				<ArrowContainer
 					disabled={disableGoNextScreen}
-					onPress={() => navigate('FirstStepsActivities', {})}
+					onPress={() => navigate('FirstStepsActivities')}
 				>
 					<ForwardArrow disabled={disableGoNextScreen} />
 				</ArrowContainer>

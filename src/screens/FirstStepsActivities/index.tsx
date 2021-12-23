@@ -54,12 +54,12 @@ const FirstStepsActivities: React.FC = () => {
 			</Content>
 
 			<Footer>
-				<ArrowContainer onPress={() => navigate('FirstStepsSchedules', {})}>
+				<ArrowContainer onPress={() => navigate('FirstStepsSchedules')}>
 					<BackArrow />
 				</ArrowContainer>
 				<ArrowContainer
 					disabled={disableGoNextScreen}
-					onPress={() => navigate('Welcome', {})}
+					onPress={() => navigate('Main')}
 				>
 					<ForwardArrow disabled={disableGoNextScreen} />
 				</ArrowContainer>

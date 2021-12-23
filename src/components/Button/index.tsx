@@ -6,7 +6,7 @@ type ButtonProps = {
 	onPress: () => void;
 	title: string;
 	fontSize: 'large' | 'small' | 'medium' | 'regular';
-	size?: string;
+	size?: 'medium' | 'full';
 };
 
 const Button: React.FC<ButtonProps> = ({ title, onPress, size, fontSize }) => {

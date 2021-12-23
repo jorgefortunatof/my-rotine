@@ -34,7 +34,7 @@ const Welcome: React.FC = () => {
 					size="medium"
 					title="Iniciar"
 					fontSize="large"
-					onPress={() => navigate('FirstStepsSchedules', {})}
+					onPress={() => navigate('FirstStepsSchedules')}
 				/>
 			</Footer>
 		</Container>

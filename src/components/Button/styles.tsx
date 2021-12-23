@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components/native';
 import { colors, fonts, metrics } from '../../styles';
 
 type ContainerProps = {
-	size?: string;
+	size?: 'medium' | 'full';
 };
 
 export const Container = styled.TouchableOpacity<ContainerProps>`
