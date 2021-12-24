@@ -1,3 +1,6 @@
+import { format } from 'date-fns';
+import ptBr from 'date-fns/locale/pt-BR';
+
 function validateHour(hourItem: string): string {
 	if (hourItem.length < 5) {
 		return 'valor inválido, deve conter 4 dígitos';
@@ -43,4 +46,9 @@ export function validateHourInterval(initialHour: string, finalHour: string) {
 	}
 
 	return null;
+}
+
+export function getCurrentHour(): string {
+	const now = new Date();
+	return format(now, 'p', { locale: ptBr });
 }

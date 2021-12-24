@@ -19,12 +19,6 @@ export const Content = styled.View`
 	align-items: center;
 `;
 
-export const Hr = styled.View`
-	width: 100%;
-	height: ${hp(1.5)}px;
-	background-color: gray;
-`;
-
 export const Title = styled.Text`
 	color: ${colors.lightest};
 

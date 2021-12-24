@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
 import Button from '../../components/Button';
+import DayActivities from '../../components/DayActivities';
+import { getCurrentHour } from '../../utils/hour';
 
 import {
 	Container,
@@ -9,22 +12,34 @@ import {
 	ActivityContainer,
 	ActivityTitle,
 	ActivityLabel,
-	Hr,
 } from './styles';
 
 const Home: React.FC = () => {
+	const [hour, setHour] = useState(getCurrentHour());
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setHour(getCurrentHour());
+			console.log('interval');
+		}, 1000);
+
+		return () => {
+			clearInterval(interval);
+		};
+	}, []);
+
 	return (
 		<Container>
 			<Content>
 				<Logo />
-				<Title>20:33h</Title>
+				<Title>{hour}h</Title>
 				<ActivityContainer>
 					<ActivityTitle>React Native</ActivityTitle>
 					<ActivityLabel>estudos</ActivityLabel>
 				</ActivityContainer>
 			</Content>
 
-			<Hr />
+			<DayActivities />
 
 			<Button
 				title="Iniciar Atividade"
